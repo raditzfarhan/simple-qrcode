@@ -199,8 +199,8 @@ class Generator
      */
     public function merge(string $filepath, float $percentage = .2, bool $absolute = false): self
     {
-        if (function_exists('base_path') && !$absolute) {
-            $filepath = base_path() . $filepath;
+        if (function_exists('base_path') && ! $absolute) {
+            $filepath = base_path().$filepath;
         }
 
         $this->imageMerge = file_get_contents($filepath);
@@ -246,7 +246,7 @@ class Generator
      */
     public function format(string $format): self
     {
-        if (!in_array($format, ['svg', 'eps', 'png'])) {
+        if (! in_array($format, ['svg', 'eps', 'png'])) {
             throw new InvalidArgumentException("\$format must be svg, eps, or png. {$format} is not a valid.");
         }
 
@@ -335,7 +335,7 @@ class Generator
      */
     public function eye(string $style): self
     {
-        if (!in_array($style, ['square', 'circle'])) {
+        if (! in_array($style, ['square', 'circle'])) {
             throw new InvalidArgumentException("\$style must be square or circle. {$style} is not a valid eye style.");
         }
 
@@ -354,7 +354,7 @@ class Generator
      */
     public function style(string $style, float $size = 0.5): self
     {
-        if (!in_array($style, ['square', 'dot', 'round'])) {
+        if (! in_array($style, ['square', 'dot', 'round'])) {
             throw new InvalidArgumentException("\$style must be square, dot, or round. {$style} is not a valid.");
         }
 
@@ -424,7 +424,7 @@ class Generator
      * @param ImageRenderer $renderer
      * @return Writer
      */
-    public function getWriter(ImageRenderer|GDLibRenderer $renderer): Writer
+    public function getWriter(ImageRenderer | GDLibRenderer $renderer): Writer
     {
         return new Writer($renderer);
     }
@@ -568,7 +568,7 @@ class Generator
     {
         $class = $this->formatClass($method);
 
-        if (!class_exists($class)) {
+        if (! class_exists($class)) {
             throw new BadMethodCallException();
         }
 
@@ -585,7 +585,7 @@ class Generator
     {
         $method = ucfirst($method);
 
-        $class = "SimpleSoftwareIO\QrCode\DataTypes\\" . $method;
+        $class = "SimpleSoftwareIO\QrCode\DataTypes\\".$method;
 
         return $class;
     }
